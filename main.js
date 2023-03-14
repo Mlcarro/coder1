@@ -1,3 +1,8 @@
+function saludar () {
+  console.log("Bienvenido a nuestra tienda");
+}
+
+
 alert("Ingrese el producto que desea llevar, para salir ingrese 0")
 let seleccionarProductos = Number(prompt( "1-buzo $3000 2-remera $1500 3-jean $5000 4-Zapatillas $6000 "))
 let seleccionarCantidad;
@@ -7,6 +12,7 @@ let total = 0;
 const cantidad = (cant, precio) => {
   return cant * precio
 }
+
 
 while (seleccionarProductos != 0) {
   switch (seleccionarProductos) {
@@ -35,6 +41,26 @@ while (seleccionarProductos != 0) {
 
 alert("el total de la compra es de: " + total)
 
+let seleccion = prompt("desea comprar mas productos, si o no")
+
+while(seleccion != "si" && seleccion != "no"){
+  alert("por favor ingresar si o no")
+  seleccion = prompt("desea comprar otro producto si o no")
+}
+
+
+if(seleccion == "si"){
+ alert("a continuacion nuestra lista de productos")
+ let todoslosProductos = productos.map(
+  (producto) => producto.nombre + " " + producto.precio + "$"
+ );
+ alert(todoslosProductos.join(" - "))
+}
+
+
+const esBarato = producto => producto.precio < 2000;
+const productosBaratos = productos.filter(esBarato)
+
 
 const envio = () => {
     if (total >= 10000) {
@@ -58,5 +84,7 @@ const metodoDePago = () => {
 
   
 }
+
+
 
 metodoDePago()
